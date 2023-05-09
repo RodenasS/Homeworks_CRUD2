@@ -8,7 +8,4 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 public interface RegistrationsRepository extends JpaRepository<Registrations, Integer> {
-    @Modifying
-    @Query("DELETE FROM Workouts w WHERE w.id = :pid")
-    void deleteByPid(@Param("pid") Integer theId);
 }
