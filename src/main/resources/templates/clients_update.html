@@ -14,7 +14,7 @@
             <div class="card">
                 <div class="card-header">Nariai</div>
                 <div class="card-body">
-                    <form method="post" th:action="'/update/'+${client.id}">
+                    <form method="post" enctype="multipart/form-data" th:action="'/update/'+${client.id}">
                         <div class="mb-3">
                             <label class="form-label">Vardas</label>
                             <input class="form-control" name="name" th:value="${client.name}" type="text">
@@ -33,7 +33,7 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Sutarties failas: </label>
-                            <input class="form-control" name="agreement" type="file">
+                            <input class="form-control" name="file" type="file">
                         </div>
                         <button class="btn btn-success">Atnaujinti</button>
 

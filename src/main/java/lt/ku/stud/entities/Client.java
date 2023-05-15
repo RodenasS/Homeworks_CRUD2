@@ -28,7 +28,7 @@ public class Client {
     @NotEmpty(message = "Telefono numeris yra privalomas")
     @Size(max = 15, message = "Telefonas negali būti ilgesnis nei 15 simbolių")
     private String phone;
-    @Column(length = 128, nullable = true)
+    @Column(nullable = true)
     private String agreement = null;
 
 
@@ -98,6 +98,7 @@ public class Client {
                 ", surname=" + surname +
                 ", email=" + email +
                 ", phone=" + phone +
+                ", agreement=" + agreement +
                 '}';
     }
 }

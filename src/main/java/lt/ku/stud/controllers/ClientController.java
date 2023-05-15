@@ -42,19 +42,22 @@ public class ClientController {
             @RequestParam("surname") String surname,
             @RequestParam("email") String email,
             @RequestParam("phone") String phone,
+            @RequestParam("file") MultipartFile file,
             @Valid @ModelAttribute("client") Client client,
-            @RequestParam("agreement") MultipartFile agreement,
             BindingResult bindingResult
     ) {
-        if (bindingResult.hasErrors()) {
-            return "clients_new";
-        } else {
-            Client c = new Client(name, surname, email, phone);
-            c.setAgreement(agreement.getOriginalFilename());
-            clientRepository.save(c);
-            fileStorageService.store(agreement, c.getId().toString());
-            return "redirect:/";
+        Client c = new Client(name, surname, email, phone);
+        if(bindingResult.hasErrors()) {
+            return "client_new";
         }
+        if(!file.isEmpty()) {
+            client.setAgreement(file.getOriginalFilename());
+        }
+        clientRepository.save(c);
+        if(!file.isEmpty()) {
+            fileStorageService.store(file, Integer.toString(c.getId()));
+        }
+        return "redirect:/";
     }
 
     @GetMapping("/{id}/agreement")

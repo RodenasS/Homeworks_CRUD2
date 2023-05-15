@@ -14,7 +14,7 @@
             <div class="card">
                 <div class="card-header">Narys</div>
                 <div class="card-body">
-                    <form action="/new" method="post" th:object="${client}">
+                    <form action="/new" method="post" enctype="multipart/form-data" th:object="${client}">
                         <div class="mb-3">
                             <label class="form-label">Vardas</label>
                             <input class="form-control" name="name" type="text">
@@ -38,7 +38,7 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Sutarties failas: </label>
-                            <input class="form-control" name="agreement" type="file">
+                            <input type="file" class="form-control" name="file">
                         </div>
                         <button class="btn btn-success">Pridėti</button>
 
