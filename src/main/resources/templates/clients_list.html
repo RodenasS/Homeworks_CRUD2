@@ -33,7 +33,7 @@
                             <td style="width: 200px;">
                                 <a class="btn btn-success" th:href="'/update/'+${client.id}">Redaguoti</a>
                                 <a class="btn btn-danger" th:href="'/delete/'+${client.id}">Ištrinti</a>
-                                <a class="btn btn-info" th:href="${'/'+student.id+'/agreement'}"
+                                <a class="btn btn-info" th:href="${'/'+client.id+'/agreement'}"
                                    th:if="${client.agreement!=null}">Sutartis</a>
                             </td>
                         </tr>

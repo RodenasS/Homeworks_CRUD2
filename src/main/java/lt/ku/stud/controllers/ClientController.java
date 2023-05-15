@@ -87,15 +87,23 @@ public class ClientController {
             @RequestParam("name") String name,
             @RequestParam("surname") String surname,
             @RequestParam("email") String email,
-            @RequestParam("phone") String phone
+            @RequestParam("phone") String phone,
+            @RequestParam("file") MultipartFile file
     ) {
+
         Client c = clientRepository.getReferenceById(id);
         c.setName(name);
         c.setSurname(surname);
         c.setEmail(email);
         c.setPhone(phone);
-        clientRepository.save(c);
 
+        if(!file.isEmpty()) {
+            c.setAgreement(file.getOriginalFilename());
+        }
+        clientRepository.save(c);
+        if(!file.isEmpty()) {
+            fileStorageService.store(file, Integer.toString(c.getId()));
+        }
         return "redirect:/";
     }
 
