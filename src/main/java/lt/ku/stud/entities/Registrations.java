@@ -1,8 +1,9 @@
 package lt.ku.stud.entities;
 
 import jakarta.persistence.*;
+
 @Entity
-@Table(name="registrations")
+@Table(name = "registrations")
 
 public class Registrations {
     @Id
@@ -13,11 +14,11 @@ public class Registrations {
     private String registration_date;
 
     @ManyToOne
-    @JoinColumn(name="Clients_id")
+    @JoinColumn(name = "Clients_id")
     private Client client;
 
     @ManyToOne
-    @JoinColumn(name="Workouts_id")
+    @JoinColumn(name = "Workouts_id")
     private Workouts workouts;
 
     public Registrations() {

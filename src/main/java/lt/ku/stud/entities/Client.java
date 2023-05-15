@@ -1,22 +1,35 @@
 package lt.ku.stud.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 
 @Entity
-@Table(name="clients_groups")
+@Table(name = "clients_groups")
 
 public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column
+    @NotEmpty(message = "Vardas yra privalomas")
+    @Size(min = 3, max = 20, message = "Vardas turi būti 3-20 simbolių ilgio")
     private String name;
     @Column
+    @NotEmpty(message = "Pavardė yra privaloma")
+    @Size(min = 3, max = 25, message = "Pavardė turi būti 3-25 simbolių ilgio")
     private String surname;
     @Column
+    @NotEmpty(message = "El. paštas yra privalomas")
+    @Email(message = "El. paštas turi būti validus")
     private String email;
     @Column
+    @NotEmpty(message = "Telefono numeris yra privalomas")
+    @Size(max = 15, message = "Telefonas negali būti ilgesnis nei 15 simbolių")
     private String phone;
+    @Column(length = 128, nullable = true)
+    private String agreement = null;
 
 
     public Client() {
@@ -67,6 +80,14 @@ public class Client {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getAgreement() {
+        return agreement;
+    }
+
+    public void setAgreement(String agreement) {
+        this.agreement = agreement;
     }
 
     @Override
