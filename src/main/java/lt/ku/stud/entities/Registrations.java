@@ -14,11 +14,11 @@ public class Registrations {
     private String registration_date;
 
     @ManyToOne
-    @JoinColumn(name = "Clients_id")
+    @JoinColumn(name = "client_id")
     private Client client;
 
     @ManyToOne
-    @JoinColumn(name = "Workouts_id")
+    @JoinColumn(name = "workout_id")
     private Workouts workouts;
 
     public Registrations() {
